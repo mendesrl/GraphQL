@@ -16,6 +16,19 @@ existe onde esta minha API Rest, o GraphQL é uma alternativa que tanto pode sub
 - Sua aplicação frontend vai dizer o que ela quer e em resposta a api GraphQL vai mandas somente os dados que foram solicitados
 
 ##  GraphQL vs REST
-### Diferenças
-- **Rest:** você utiliza varias urls diferentes para retornar um conjunto especifico de dados
-- **GraphQL:** 
+- **Rest:** você utiliza multiplas urls para retornar um conjunto especifico de dados
+- **GraphQL:** você utiliza uma unica url e a partir dela você passa o corpo da requisição, alem de permitir obter os dados de fontes distintas
+
+## Como os Dados são Organizado?
+```
+{ 
+    maes {
+        id
+        nome
+        idade
+        filhos {
+            nome idade
+        }
+    } 
+}
+```
