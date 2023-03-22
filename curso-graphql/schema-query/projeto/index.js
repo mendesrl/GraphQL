@@ -1,5 +1,16 @@
 const { ApolloServer, gql } = require("apollo-server");
 
+const perfis = [
+  {
+    id: 1,
+    nome: "Admin",
+  },
+  {
+    id: 2,
+    nome: "Comum",
+  },
+];
+
 const usuarios = [
   {
     id: 1,
@@ -26,6 +37,11 @@ const typeDefs = gql`
     salario: Float
     vip: Boolean
   }
+  
+  type Perfil {
+    id: Int
+    nome: String!
+  }
 
   type Produto {
     nome: String!
@@ -44,6 +60,8 @@ const typeDefs = gql`
     numerosMegaSena: [Int!]!
     usuarios: [Usuario]
     usuario(id: Int): Usuario
+    perfis: [Perfil]
+    perfil(id: Int): Perfil
   }
 `;
 const resolvers = {
@@ -93,6 +111,14 @@ const resolvers = {
     },
     usuario(_, args) {
       const selecionados = usuarios.filter((u) => u.id === args.id);
+
+      return selecionados ? selecionados[0] : null;
+    },
+    perfis() {
+      return perfis;
+    },
+    perfil(_, args) {
+      const selecionados = perfis.filter((p) => p.id === args.id);
 
       return selecionados ? selecionados[0] : null;
     },
