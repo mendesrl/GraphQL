@@ -26,6 +26,7 @@ const typeDefs = gql`
         hora: Date
         usuarioLogado: Usuario
         produtoEmDestaque: Produto
+        numerosMegaSena: [Int!]!
     }
     
 `
@@ -67,6 +68,9 @@ const resolvers = {
                 preco: 100.00,
                 desconto: 50.00,
             }  
+        },
+        numerosMegaSena() {
+            return [3,5,6,7,8]
         }
 
     },
